@@ -7,13 +7,17 @@ const launch = {
   mission: "Kepler Exploration X",
   rocket: "Explorer IS1",
   lunchDate: new Date("December 27, 2030"),
-  destination: "Kepler-442 b",
+  target: "Kepler-442 b",
   customer: ["Nasa", "ZTM"],
   upcoming: true,
   success: true,
 };
 
 launches.set(launch.flightNumber, launch);
+
+function existLaunchWithId(launchId) {
+  return launches.has(launchId);
+}
 
 function getAllLaunches() {
   return Array.from(launches.values());
@@ -32,7 +36,16 @@ function addNewLunch(launch) {
   );
 }
 
+function abortLaunchById(launchId) {
+  const aborted = launches.get(launchId);
+  aborted.upcoming = false;
+  aborted.success = false;
+  return aborted;
+}
+
 module.exports = {
+  existLaunchWithId,
   getAllLaunches,
   addNewLunch,
+  abortLaunchById,
 };

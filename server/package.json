@@ -4,7 +4,7 @@
   "description": "NASA Mission Control API",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "watch": "nodemon server.js",
     "start": "node server.js"
   },
@@ -16,5 +16,8 @@
     "csv-parse": "^4.16.0",
     "express": "^4.17.1",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
   }
 }
