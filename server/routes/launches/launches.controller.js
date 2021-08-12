@@ -20,9 +20,16 @@ function httpAddNewLunch(req, res) {
     !launch.launchDate ||
     !launch.target
   ) {
-    return res.status(400).json(launch);
+    return res.status(400).json({
+      error: "messing launches properties",
+    });
   }
-  launch.lunchDate = new Date(launch.lunchDate);
+  launch.launchDate = new Date(launch.launchDate);
+  if (isNaN(launch.launchDate)) {
+    return res.status(400).json({
+      error: "Invalid launch Date ",
+    });
+  }
   addNewLunch(launch);
 
   return res.status(201).json(launch);
